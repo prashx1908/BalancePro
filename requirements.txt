@@ -1,5 +1,5 @@
-
-Flask
+Flask==2.2.2
+numpy
+scikit-learn
+pandas
 plotly
-gunicorn
-jinja2
