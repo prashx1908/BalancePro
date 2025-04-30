@@ -2,8 +2,11 @@ from flask import Flask, render_template, request, url_for
 import pickle
 import numpy as np
 import json
-
+import gzip
+import pickle
 app = Flask(__name__)
+model = None
+scaler = None
 
 # Load model + scaler once at startup
 with open('../rf_model.pkl', 'rb') as f:
