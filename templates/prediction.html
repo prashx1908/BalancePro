@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+  <div class="prediction-container">
+
+    <!-- Description at the top -->
+    <div class="prediction-header text-center p-4">
+      <h2>Developer Productivity Predictor</h2>
+      <p>Our AI-powered tool uses scientifically-backed metrics to analyze your work habits and predict your overall work-life balance score.</p>
+      <p>Complete all fields to receive a personalized assessment with recommendations tailored to your situation.</p>
+    </div>
+
+    <!-- Body splits left/right -->
+    <div class="prediction-body">
+      <div class="prediction-left">
+        <form method="POST" action="{{ url_for('prediction') }}">
+          {% set items = choices.items()|list %}
+          {% set half = (items|length // 2) + (items|length % 2) %}
+          {% for field, options in items[:half] %}
+            <div class="mb-4">
+              <label for="{{ field }}" class="form-label">{{ labels[field] }}</label>
+              <select name="{{ field }}" id="{{ field }}" class="form-select" required>
+                {% for value, desc in options %}
+                  <option value="{{ value }}">{{ desc }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+      </div>
+      <div class="prediction-right">
+          {% for field, options in items[half:] %}
+            <div class="mb-4">
+              <label for="{{ field }}" class="form-label">{{ labels[field] }}</label>
+              <select name="{{ field }}" id="{{ field }}" class="form-select" required>
+                {% for value, desc in options %}
+                  <option value="{{ value }}">{{ desc }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        <div class="text-center mt-4">
+          <button type="submit" class="btn-primary">Get Your Prediction</button>
+        </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

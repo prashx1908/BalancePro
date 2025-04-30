@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Work-Life Balance Predictor{% endblock %}</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">BalancePro</div>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/prediction">Predict</a>
+      <a href="/benefits">Benefits</a>
+    </div>
+  </div>
+
+  <main class="container py-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    &copy; 2025 BalancePro — Promoting Healthy Work-Life Harmony
+  </footer>
+
+</body>
+</html>

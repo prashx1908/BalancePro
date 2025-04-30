@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="home-container">
+  <div class="home-left">
+    <h1>Welcome to the Work-Life Balance Predictor</h1>
+    <p>Empowering mindful living through intelligent predictions.</p>
+    <a href="/prediction" class="btn-primary">Try Prediction</a>
+  </div>
+  <div class="home-right">
+    <img src="{{ url_for('static', filename='images/worklife.png') }}" alt="Work Life Balance Image">
+  </div>
+</div>
+{% endblock %}

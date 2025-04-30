@@ -1,0 +1,5 @@
+
+Flask
+plotly
+gunicorn
+jinja2

@@ -1,0 +1,514 @@
+/* Base Styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to right, #f1f2f6, #dfe6e9);
+  color: #2d3436;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation Bar */
+.navbar {
+  background: linear-gradient(45deg, #74b9ff, #0984e3);
+  padding: 1.5rem 3rem;
+
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px 8px 0 0; /* Rounded corners on top */
+}
+
+/* Navbar Logo */
+.navbar .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: 3rem;
+  color: white;
+  letter-spacing: 1px;
+}
+
+/* Centering Navigation Links */
+.navbar .nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Styling for the Navigation Links */
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px; /* Rounded buttons */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Hover Effect for Links */
+.navbar .nav-links a:hover {
+  text-decoration: none;
+  opacity: 0.9;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Adding a subtle underline on hover */
+.navbar .nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Making the navbar responsive */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .navbar .logo {
+    margin-bottom: 1rem;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+/* Home Section */
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin-top: 2rem;
+}
+
+.home-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.home-left h1 {
+  font-size: 2.7rem;
+  margin-bottom: 1rem;
+  color: #2d3436;
+}
+
+.home-left p {
+  font-size: 1.2rem;
+  color: #636e72;
+  margin-bottom: 2rem;
+}
+
+.home-right {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.home-right img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #2c80b4;
+  text-decoration: none;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(52, 152, 219, 0.2);
+}
+
+/* Form Section */
+.prediction-form h2{
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+/* Turn prediction-container vertical */
+.prediction-container {
+  display: flex;
+  flex-direction: column; /* stack header then body */
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+/* Header styling */
+.prediction-header {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: white;
+}
+
+/* Body splits left/right */
+.prediction-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Left and right both take half width on desktop */
+.prediction-left,
+.prediction-right {
+  flex: 1 1 50%;
+  padding: 2rem;
+  box-sizing: border-box;
+  min-width: 300px;
+}
+
+/* Right side extra padding if needed */
+.prediction-right {
+  background: #f7f9fb;
+}
+
+/* Mobile: stack columns */
+@media (max-width: 768px) {
+  .prediction-body {
+    flex-direction: column;
+  }
+}
+
+.text-muted {
+  color: #7f8c8d;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.py-5 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.shadow {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* General Styles for Benefits Page */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+/* Styling for the Benefit Container */
+.benefits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  padding-top: 20px;
+}
+
+/* Benefit Cards */
+.benefit-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect for Cards */
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Icons in Cards */
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* Card Titles */
+.benefit-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+/* Card Text */
+.benefit-card p {
+  color: #666666;
+  font-size: 1rem;
+}
+
+/* For better spacing and alignment */
+.benefit-card:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Form Grid */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.75rem;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .prediction-container {
+    flex-direction: column;
+  }
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #34495e;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #dfe6e9;
+  background-color: #f8f9fa;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.form-select:focus {
+  border-color: #74b9ff;
+  outline: none;
+  box-shadow: 0 3px 10px rgba(116, 185, 255, 0.2);
+}
+
+/* Result Display */
+.result-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.result-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  box-shadow: 0 10px 25px rgba(116, 185, 255, 0.3);
+}
+
+.score {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.category {
+  font-size: 24px;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#emoji-reaction {
+  font-size: 48px;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.result-description {
+  color: #636e72;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.recommendations {
+  background: #f7f9fb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.score-category-box {
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.score-category-box h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.score-category-box p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Container for Recommendation and Circle Chart */
+.recommendation-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Recommendation Box */
+.recommendation-box {
+    width: 48%;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.6;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-box strong {
+    font-size: 22px;
+    color: #333;
+}
+
+.recommendation-box em {
+    font-size: 18px;
+}
+
+/* Circular Chart */
+.circle-chart {
+    width: 48%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Big Graph Below the Recommendation and Circle Chart */
+.big-graph {
+    height: 500px;
+    margin-top: 40px;
+    background-color: #f0f0f0;
+}
+
+/* List Group (Tips) */
+.list-group-item {
+  border: none;
+  background: #f7f9fb;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 16px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #ddd;
+}

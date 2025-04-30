@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <section class="result">
+        <!-- Top Box for Work-Life Score and Category -->
+        <div class="score-category-box">
+            <h1>Your Work-Life Balance Score: {{ raw }}</h1>
+            <p>Category: <strong>{{ category }}</strong></p>
+        </div>
+
+        <!-- Container for the recommendation box and circle chart -->
+        <div class="recommendation-container">
+            <!-- Recommendation Section -->
+            <div id="recommendation" class="recommendation-box">
+                {% if category == 'Excellent' %}
+                    <p><strong>Excellent Work-Life Balance!</strong></p>
+                    <p><em>Recommendation:</em> Consider helping others by sharing your strategies for maintaining a work-life balance. You could even mentor others who are struggling to find this balance.</p>
+                {% elif category == 'Good' %}
+                    <p><strong>Good Work-Life Balance</strong></p>
+                    <p>Your work-life balance is good, but there’s room for improvement. You manage your responsibilities well, but there might be moments where work pressure impacts your personal life. Reflecting on how you spend your time can help you make small adjustments that will enhance your overall well-being.</p>
+                    <p><em>Recommendation:</em> Try to schedule regular "me-time" or hobbies that allow you to unwind and disconnect from work. Setting strict work hours could help you avoid overworking and prioritize rest.</p>
+                {% elif category == 'Fair' %}
+                    <p><strong>Average Work-Life Balance</strong></p>
+                    <p>Your work-life balance is average. This indicates that you may be spending too much time on work, leaving little room for personal time or relaxation. It's important to evaluate how you’re allocating your time and identify areas where you can make positive changes.</p>
+                    <p><em>Recommendation:</em> Consider setting clearer boundaries between work and personal time. Schedule breaks during work and try to create time in the evenings or weekends to focus on self-care, family, and hobbies. Prioritize sleep, exercise, and relaxation to recharge.</p>
+                {% elif category == 'Poor' %}
+                    <p><strong>Needs Improvement</strong></p>
+                    <p>Your work-life balance needs attention. It seems that work demands are taking a heavy toll on your personal life, and you might be feeling overwhelmed or burned out. It's essential to take proactive steps to improve your balance before it starts affecting your health and relationships.</p>
+                    <p><em>Recommendation:</em> Start by evaluating your workload and personal commitments. Delegate tasks, set realistic work goals, and establish a clear boundary for when the workday ends. Make self-care a priority—take breaks, get enough sleep, and try engaging in activities that bring you joy and relaxation.</p>
+                {% endif %}
+            </div>
+
+            <!-- Circular progress chart -->
+            <div id="circle-visualization" class="circle-chart"></div>
+        </div>
+
+        <!-- Bar Chart for Work-Life Balance Score -->
+        <div id="score-visualization" class="score-chart"></div>
+
+        <!-- Big graph below the charts -->
+        <div id="big-graph" class="big-graph"></div>
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <script>
+            // Data for the bar chart
+            var score = {{ raw }};
+            var data = [{
+                x: ['Work-Life Balance Score'],
+                y: [score],
+                type: 'bar',
+                marker: {
+                    color: score > 650 ? 'green' : (score > 570 ? 'yellow' : 'red')
+                }
+            }];
+            var layout = {
+                title: 'Your Work-Life Balance Score',
+                xaxis: { title: 'Score' },
+                yaxis: { title: 'Value' }
+            };
+            Plotly.newPlot('score-visualization', data, layout);
+
+            // Data for the circular progress indicator (donut chart)
+            var progress = (score / 790) * 100; // Calculate percentage
+            var circleData = [{
+                type: 'pie',
+                values: [progress, 100 - progress],
+                hole: 0.5,
+                hoverinfo: 'label+percent',
+                textinfo: 'none',
+                marker: {
+                    colors: ['green', 'lightgray']
+                }
+            }];
+            var circleLayout = {
+                title: 'Work-Life Balance Percentage',
+                showlegend: false,
+                height: 400,
+                width: 400
+            };
+            Plotly.newPlot('circle-visualization', circleData, circleLayout);
+        </script>
+    </section>
+{% endblock %}
