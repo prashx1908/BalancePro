@@ -2,16 +2,13 @@ from flask import Flask, render_template, request, url_for
 import pickle
 import numpy as np
 import json
-import gzip
-import pickle
+
 app = Flask(__name__)
-model = None
-scaler = None
 
 # Load model + scaler once at startup
-with open('../rf_model.pkl', 'rb') as f:
+with open('rf_model.pkl', 'rb') as f:
     model = pickle.load(f)
-with open('../scaler.pkl', 'rb') as f:
+with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
 LABELS = {
@@ -194,4 +191,4 @@ def prediction():
 
 
 if __name__ == '__main__':
-    app.run
+    app.run(debug=True)
