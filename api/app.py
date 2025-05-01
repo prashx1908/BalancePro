@@ -6,9 +6,9 @@ import json
 app = Flask(__name__)
 
 # Load model + scaler once at startup
-with open('../rf_model.pkl', 'rb') as f:
+with open('rf_model.pkl', 'rb') as f:
     model = pickle.load(f)
-with open('../scaler.pkl', 'rb') as f:
+with open('scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
 LABELS = {
