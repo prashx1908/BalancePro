@@ -3,6 +3,5 @@ Werkzeug==2.2.3
 gunicorn
 plotly
 numpy
-pandas
 scikit-learn
 pickle-mixin
